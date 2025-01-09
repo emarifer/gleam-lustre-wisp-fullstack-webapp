@@ -1,0 +1,9 @@
+*.beam
+*.ez
+/build
+erl_crash.dump
+
+/priv/*.css
+/priv/*.mjs
+pokemon.txt
+seed.sh
