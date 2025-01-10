@@ -23,6 +23,12 @@ fi
 
 cd client/
 
+if [ ! -d node_modules ]; then
+  echo "downloading Node dependencies (DaisyUI)…"
+  
+  npm i
+fi
+
 grep -rlZ 'const api_root = \".*\"' . | xargs -0 sed -i "s|const api_root = \".*\"|const api_root = \"$address\"|"
 
 cd ..

@@ -30,7 +30,7 @@
 
 </div>
 
-- [x] **Using the [Glean](https://gleam.run/) programming language:** `Gleam` is a general-purpose, concurrent, functional high-level programming language that compiles to Erlang or JavaScript source code. Gleam is a statically-typed language, which is different from the most popular languages that run on Erlang’s virtual machine (`BEAM`), `Erlang` and `Elixir`. Gleam has its own type-safe implementation of OTP, [Erlang's actor](https://en.wikipedia.org/wiki/Actor_model) framework. Packages are provided using the `Hex` package manager, and an index for finding packages written for Gleam is available. Thanks to a multi-core actor based concurrency system that can run millions of concurrent tasks, fast immutable data structures, and a concurrent garbage collector that never stops the world, your service can scale and stay lightning fast with ease.
+- [x] **Using the [Gleam](https://gleam.run/) programming language:** `Gleam` is a general-purpose, concurrent, functional high-level programming language that compiles to Erlang or JavaScript source code. Gleam is a statically-typed language, which is different from the most popular languages that run on Erlang’s virtual machine (`BEAM`), `Erlang` and `Elixir`. Gleam has its own type-safe implementation of OTP, [Erlang's actor](https://en.wikipedia.org/wiki/Actor_model) framework. Packages are provided using the `Hex` package manager, and an index for finding packages written for Gleam is available. Thanks to a multi-core actor based concurrency system that can run millions of concurrent tasks, fast immutable data structures, and a concurrent garbage collector that never stops the world, your service can scale and stay lightning fast with ease.
 
 <div align="center">
 
@@ -59,11 +59,7 @@
 
 ### 👨‍🚀 Getting Started:
 
-To test the application, you don't need to have Gleam installed on your machine. But as a minimum requirement, you do need to have Docker and NodeJs/NPM. The latter is because, although the Lustre framework's development tools download a Tailwindcss binary automatically, in this application we use a Tailwind plugin, `DaisyUI`, a component library for Tailwind, and its installation requires NPM. So first of all, run this in the root of your project directory:
-
-```
-$ cd client/ && npm i && cd ..
-```
+To test the application, you don't need to have Gleam installed on your machine. But as a minimum requirement, you do need to have Docker and NodeJs/NPM. The latter is because, although the Lustre framework's development tools download a Tailwindcss binary automatically, in this application we use a Tailwind plugin, `DaisyUI`, a component library for Tailwind, and its installation requires NPM.
 
 Next you will need to create a Docker image of the application to run locally. Simply run this in the terminal (Docker required):
 
