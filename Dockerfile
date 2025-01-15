@@ -1,7 +1,10 @@
-FROM ghcr.io/gleam-lang/gleam:v1.6.3-erlang-alpine
+ARG GLEAM_VERSION=v1.6.3
+
+FROM ghcr.io/gleam-lang/gleam:${GLEAM_VERSION}-erlang-alpine AS builder
 
 WORKDIR /build
 
+# Add project code
 COPY ./client /build/client
 COPY ./server /build/server
 COPY ./shared /build/shared
@@ -17,9 +20,13 @@ RUN cd /build/client \
 # Compile the project
 RUN cd /build/server \
     && gleam clean \
-    && gleam export erlang-shipment \
-    && mv build/erlang-shipment /app \
-    && rm -r /build
+    && gleam export erlang-shipment
+
+# Start from a clean slate
+FROM ghcr.io/gleam-lang/gleam:${GLEAM_VERSION}-erlang-alpine
+
+# Copy the compiled server code from the builder stage
+COPY --from=builder /build/server/build/erlang-shipment /app
 
 # Run the server
 WORKDIR /app
@@ -32,3 +39,5 @@ CMD ["run"]
 # docker run --name testapp -d -p 8000:8000 emarifer/pokedexapp-image
 # USAR `mist.bind("0.0.0.0")` PARA HACER DEPLOY CON DOCKER:
 # https://discord.com/channels/768594524158427167/768594524158427170/1312909882822885438
+# Using separate stage when building the image to reduce its size:
+# https://hexdocs.pm/lustre/guide/07-full-stack-deployments.html
